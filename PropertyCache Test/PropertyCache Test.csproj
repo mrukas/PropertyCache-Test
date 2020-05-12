@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<RootNamespace>PropertyCache_Test</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Modules\**" />
+	  <Content Remove="Modules\**" />
+	  <EmbeddedResource Remove="Modules\**" />
+	  <None Remove="Modules\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
+	</ItemGroup>
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+		<Copy SourceFiles="$(SolutionDir)Web Module\$(OutDir)Web Module.dll" DestinationFolder="$(ProjectDir)Modules" />
+	</Target>
+</Project>
